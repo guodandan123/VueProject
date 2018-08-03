@@ -1,27 +1,35 @@
 <template>
   <div> 
-
-  <ul>
-  	<router-link tag="li" to="./components/movie"></router-link>
-  	<router-link tag="li" to="./components/cienma"></router-link>
-  	<router-link tag="li" to="./components/personal"></router-link>
-
-  </ul>
-   <navbar></navbar>
-
-   <router-view></router-view>
+ 
+ <router-view></router-view>
+<navbar></navbar>
+  
   </div>
   
 </template>
 
 <script>
-import navbar from"./components/common/navbar"
-import cinema from"./components/cinema"
+import navbar from "./components/common/navbar.vue"
+
+
 export default {
-  name: 'App'
+  
+  name: 'App',
+  data(){
+    return{
+    	name:"猫眼电影"
+    }
+  },
+  components:{
+    navbar
+  }
+
 }
 </script>
 
-<style>
-
+<style  >
+*{
+	margin:0;
+	padding: 0;
+}
 </style>
