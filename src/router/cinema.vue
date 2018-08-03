@@ -1,6 +1,9 @@
 <template>
 
 <div>
+<div class="header">
+	<div>猫眼电影</div>
+</div>
 <header> 
 		
 			<div class="cinema">影院</div>
@@ -50,7 +53,8 @@ export default {
   data(){
 	return {
 		cinemaList:[],
-		
+		isShow:false 
+
 	}
   },
    components:{
@@ -184,7 +188,7 @@ export default {
 		height: 120px;
 		margin: 0 auto;
 		background:#fff;                              
-		margin-top: 50px;} 
+		margin-top: 15px;} 
 
 .list{
 margin-top: 10px;

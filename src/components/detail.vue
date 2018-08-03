@@ -19,8 +19,8 @@
 </ul>
 	</div>
 
-	<ul class="cinemalist" v-if="filterCinemas" >
-		<li  v-if="filterCinemas" v-for="datalist in filterCinemas"> {{datalist.name}}</li>
+	<ul class="cinemalist" v-if="filterCinemas" >本地上映影院：
+		<li><div   v-if="filterCinemas" v-for="datalist,index  in filterCinemas">{{datalist.name}}</div></li>
 	</ul>
 </div>
 </template>
@@ -33,7 +33,8 @@ import router from "../router"
 		data(){
 			return {
 				filminfo:null,
-				filterCinemas: null
+				filterCinemas: [],
+				filterdistrict:[]
 			}
 		},
 
@@ -51,7 +52,10 @@ import router from "../router"
 			}),
 			axios.get(`/ajax/filterCinemas?movieId=${this.$route.params.Tibbersid}`).then(res=>{
   				this.filterCinemas=res.data.brand.subItems;
+  				this.filterdistrict=res.data.district.subItems;
+
   				console.log(res.data.brand.subItems)
+  				console.log(res.data.district.subItems)
   				
   })
 		}
@@ -60,9 +64,10 @@ import router from "../router"
 
 <style scoped>
 .cinemalist{padding-top: 170px;
+	margin-left: 20px;
 }
 .cinemalist li{
-	height: 20px;
+	
 
 
 }
