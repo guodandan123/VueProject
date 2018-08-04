@@ -5,18 +5,43 @@
 		
 			<div class="cinema">影院</div>
 			<div class="inp">
-				 <i class="iconfont icon-plus-select-down"></i>
+				  <i class="iconfont icon-plus-select-down"></i>
 	 			<select name="" id=""><option value="">大连</option></select>
 				<i class="iconfont icon-icon-" id="magnimier"></i>
 				<input type="text" placeholder="搜影院" class="search">
 				<ul class="qqq">
-					<li><div >全城</div></li>
+					<li @click="isShow=!isShow"><div class="ci">全城</div></li>
 					<i id="on" class="iconfont icon-plus-select-down"></i>
 					<li class="one"><div >品牌</div></li>
 					<i id="tw" class="iconfont icon-plus-select-down"></i>
 					<li><div  class="child">特色</div></li>
 					<i id="sr" class="iconfont icon-plus-select-down"></i>
 				</ul>
+				<div  v-show="isShow" class="city">
+					<div class=nav>
+						<div :class="isact?'lef left':'left'" @click="isact=!isact">商区</div>
+						<div class="right righ">地铁站</div>
+					</div>
+					<div class="nave">全部(65)</div>
+					<ul class="ciy">
+						<li>甘井子区(15)
+						
+							
+						</li>
+						<li>中山区(12)</li>
+						<li>沙河口区(10)</li>
+						<li>开发区(6)</li>
+						<li>瓦房店市(5)</li>
+						<li>金州区(4)</li>
+						<li>普兰店市(4)</li>
+						<li>庄河市(3)</li>
+						<li>西岗区(3)</li>
+						<li>旅顺口区(2)</li>
+						<li>长海县(1)</li>
+					</ul>
+					</div>
+					
+				
 			</div>
 		
 	</header>
@@ -34,9 +59,6 @@
 				
 				<span v-if="datalist.tag.halltype" class="blu">厅</span>
 			</div>
-		
-
-
 		</div>
 	</div></div>
 </template>
@@ -48,16 +70,17 @@ export default {
   data(){
 	return {
 		cinemaList:[],
-		
+		isShow:false,
+		isact:0,
 	}
   },
    components:{
-
+		
   },
   mounted(){
   	axios.get('/ajax/cinemaList?day=2018-08-01&offset=0&limit=20&districtId=-1&lineId=-1&hallType=-1&brandId=-1&serviceId=-1&areaId=-1&stationId=-1&item=&updateShowDay=true&reqId=1533121602991&cityId=65').then(res=>{
   	this.cinemaList=res.data.cinemas;
-  	console.log(res.data.cinemas)
+  	//console.log(res.data.cinemas)
   })
   }
 }
@@ -125,7 +148,7 @@ export default {
 
 
 	}
-	header ul{
+	header .qqq{
 		width: 100%;
 		height: 45px;
 		background: #ffffff;
@@ -151,7 +174,7 @@ export default {
 				top: 15px;
 			}
 
-			li{
+			 li{
 				width: 34%;
 				height: 45px;
 				line-height: 45px;
@@ -162,10 +185,10 @@ export default {
 		}
 	}
 
-		.child{
-			border-right: none;
+				.child{
+					border-right: none;
 				}
-	.header{
+.header{
 
 	line-height: 50px;
 	width: 100%;
@@ -182,8 +205,7 @@ export default {
 		height: 120px;
 		margin: 0 auto;
 		background:#fff;                              
-		margin-top: 150px;
-	} 
+		margin-top: 50px;} 
 
 .list{
 margin-top: 10px;
@@ -233,6 +255,55 @@ span{position: absolute;
     color: #9f9f9f;
     	}
 
+.city{
+	position: fixed;
+	left: 0;
+	top:135px;
+	background: #ccc;
+	width:100%;
+	height:100%;
+	
+}
+.nav{
+	width:100%;
+	height:50px;
+	background:#edc;
+	text-align: center;
+	line-height: 50px;
+
+}
+.left{
+	width:50%;
+	height: 100%;
+	background:#edd;
+	float: left;
+}
+.right{
+	width:50%;
+	height: 100%;
+	background:#ecd;
+	float: right;
+}
+.nave{
+	width: 100%;
+	height: 40px;
+	display: block;
+	line-height: 40px;
+}
+.ciy li{
+	width:120px;
+	height: 40px;
+	line-height: 40px;
+	background:#fff;
+
+}
+.lef{
+	border-bottom: 1px solid red;
+}
+.righ{
+	border-bottom: 1px solid red;
+
+}
 select{
 	background: none;
 	font-size: 14px;

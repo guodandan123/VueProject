@@ -2,7 +2,7 @@
   <div> 
 
 <div class="header">
-	<router-link class="abc" to="/film/nowplaying"><i class="iconfont icon-fanhui"></i></router-link>
+	<router-link class="abc" to="/film/nowplaying" tag="div"><i class="iconfont icon-fanhui"></i></router-link>
 	<div>猫眼电影</div>
 </div>
 	<ul class="nav">

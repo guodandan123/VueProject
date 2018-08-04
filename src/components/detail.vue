@@ -1,10 +1,10 @@
 <template>
 	<div  v-if="filminfo">
 		<div class="header">
-			 <router-link tag="div" to="/film/nowplaying"><span><i class="iconfont icon-left"></i></span>{{filminfo.nm}} </router-link>
+			 <router-link tag="div" to="/film/nowplaying"><i class="iconfont icon-fanhui"></i>{{filminfo.nm}} </router-link>
 		</div>
       	<div v-if="filminfo">
-<ul >
+<ul class="detail">
 	<li><img :src="filminfo.img" alt=""></li>
 	<li>
 	<ul class="right">
@@ -18,15 +18,29 @@
 	</li>
 </ul>
 	</div>
-	<ul class="cinemalist" v-if="filterCinemas" >本地上映影院：
-		<div id="showdays">
-		<ul>
-			<li>今天{{filminfo.date}}</li>
-		</ul>
-	</div>
-		<li><div v-if="filterCinemas" v-for="datalist,index  in filterCinemas">{{datalist.name}}</div></li>
-	</ul>
+	<h4>剧情简介：</h4>
+	<p class="p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{filminfo.dra}}</p>
 
+
+
+	<div class="falls">
+		<h4>上映地点：</h4>
+		<div class="list" v-for="datalist in cinemaList">
+			<div class="h1">{{datalist.nm}}</div> 
+		
+			<p class="addr">&nbsp;&nbsp;&nbsp;&nbsp;{{datalist.addr}}</p><div>{{datalist.distance}}</div>
+			<div class="spanParent">
+			
+			
+				
+			</div>
+			
+			<!--<span v-if="datalist.tag.endorse" class="blue">卡</span>
+			<span class="last">{{datalist.promotion.cardPromotionTag}}</span>-->
+
+
+		</div>
+	</div>
 </div>
 </template>
 
@@ -37,8 +51,9 @@ import router from "../router"
 		name:"detail",
 		data(){
 			return {
+				cinemaList:[],
 				filminfo:null,
-				filterCinemas:[],
+				filterCinemas: [],
 				filterdistrict:[]
 			}
 		},
@@ -47,6 +62,11 @@ import router from "../router"
 			//页面加载完 ，接受路由参数
 			//console.log(this.$route.params.Tibbersid);
 			//ajax请求数据
+				axios.get('/ajax/cinemaList?day=2018-08-01&offset=0&limit=20&districtId=-1&lineId=-1&hallType=-1&brandId=-1&serviceId=-1&areaId=-1&stationId=-1&item=&updateShowDay=true&reqId=1533121602991&cityId=65').then(res=>{
+  	this.cinemaList=res.data.cinemas;
+  //	console.log(res.data.cinemas)
+  })
+
 			axios.get(`/ajax/detailmovie?movieId=${this.$route.params.Tibbersid}`).then(res=>{
 				// console.log(res.data);
 				this.filminfo = res.data.detailMovie//
@@ -58,8 +78,9 @@ import router from "../router"
 			axios.get(`/ajax/filterCinemas?movieId=${this.$route.params.Tibbersid}`).then(res=>{
   				this.filterCinemas=res.data.brand.subItems;
   				this.filterdistrict=res.data.district.subItems;
-  				console.log(res.data.brand.subItems)
-  				// console.log(res.data.district.subItems)
+
+  				//console.log(res.data.brand.subItems)
+  				//console.log(res.data.district.subItems)
   				
   })
 		}
@@ -67,7 +88,48 @@ import router from "../router"
 </script>
 
 <style scoped>
-.cinemalist{padding-top: 170px;
+h4{
+	display: inline-block;
+}
+
+.falls{width: 95%;
+		height: 120px;
+		margin: 0 auto;
+		background:#fff;                              
+		margin-top: 50px;} 
+
+.list{
+margin-top: 10px;
+	   border-bottom: 1px solid #ccc;
+	   padding-bottom: 10px;}
+.h1{font-size: 16px;
+	font-weight: 600;
+   display: inline-block;
+				}
+.span{font-size: 14px;
+	  color: #f3645f;
+	  margin-right: 50px}
+.span span{font-size: 14px;
+margin-right:-25px }
+
+span{position: absolute;
+	right: 0;
+	width:50px;
+				}
+
+
+.spanParent span{	margin-top: 3px;
+	margin-bottom: 3px;
+	border:1px solid #57c0f8;
+	border-radius: 2px;
+	color:#57c0f8;
+	font-size: 12px;
+}
+
+.detail{
+	margin-left: 20px
+}
+.cinemalist{padding-top: 20px;
 	margin-left: 20px;
 }
 .cinemalist li{
@@ -78,8 +140,7 @@ import router from "../router"
 .header i{
 	float: left;
 	font-size: 24px;
-
-
+	margin-left: 10px;
 }
 .header{
 
@@ -91,14 +152,20 @@ import router from "../router"
 	left: 0;
 	top: 0;
 	color: #fff;
-	font-size:24px;
+	font-size:20px;
 	text-align: center;
 }
+.p{
+	color: #333;
+margin-left: 10px}
 
 li{list-style: none;}
 img{
 	float: left;
 	height: 114px
+}
+.sc{
+	font-weight: 600;
 }
 .star{
 	overflow: hidden;
@@ -106,7 +173,7 @@ img{
 }
 .list{
 
-	height: 114px;
+	height: 70px;
 	padding:10px;
 }
 .right{
@@ -119,5 +186,9 @@ img{
 .list{
 	border-bottom: 1px solid #eee;
 
+}
+.addr{
+	font-size: 12px;
+	color: #555
 }
 </style>
