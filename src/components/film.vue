@@ -5,9 +5,10 @@
 	<div>猫眼电影</div>
 </div>
 	<ul class="nav">
-	<router-link class="left" activeClass="Tibbers" tag="li" to="/film/nowplaying">正在热映</router-link>
+		<select name="" id=""><option value="">大连</option></select>
+		<router-link class="left" activeClass="Tibbers" tag="li" to="/film/nowplaying">正在热映</router-link>
 		<router-link class="rigth" activeClass="Tibbers" tag="li" to="/film/comingsoon">即将上映</router-link>
-
+		<div class="search"><i class="iconfont icon-search"></i></div>
 	</ul>
 	
 
@@ -56,7 +57,7 @@ height:30px;
 	left: 0;
 	top: 0;
 	color: #fff;
-	font-size:24px;
+	font-size:20px;
 	text-align: center;
 }
 li{
@@ -65,5 +66,20 @@ li{
 	height:30px;
 	line-height: 30px;
 	list-style: none;
+}
+select{
+	background: none;
+	font-size: 14px;
+	border:none;
+}
+div.search{
+	margin-top: 3px;
+	margin-right: 20px;
+}
+div i{
+	color: #e54847;
+	width: 20px;
+	height: 20px;
+	font-weight:bold;
 }
 </style>

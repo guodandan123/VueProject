@@ -3,15 +3,15 @@
   
   <ul>
     <router-link activeClass="Tibbers" tag="li" to="/film/nowplaying">
-     <div><i  class="iconfont icon-dianying"></i>
+     <div><i class="iconfont icon-dianyingyuan"></i>
     </div><span >电影</span>
     </router-link>
     <router-link activeClass="Tibbers" tag="li" to="/cinema">
-    <div><i  class="iconfont icon-tupian"></i>
+    <div><i class="iconfont icon-yingyuana"></i>
     </div><span >影院</span>
     </router-link>
     <router-link activeClass="Tibbers" tag="li" to="/personal/meituan">
-    <div> <i  class="iconfont icon-21"></i>
+    <div> <i class="iconfont icon-yonghu"></i>
    </div> <span >我的</span>
     </router-link>
 
@@ -40,13 +40,15 @@ span{
 ul{
   background: #fff;
   z-index: 999;
-  padding-top: 8px; 
+  /*padding-top: 5px; */
+  padding-bottom:5px; 
   border-top: 1px solid #ccc;
   position: fixed;
   bottom:0px;
   left: 0;
   width: 100%;
-  height: 60px;}
+  height: 50px;
+}
   ul li div{
 
      width:100%;

@@ -7,7 +7,8 @@
             <input type="" name="" placeholder=" 账户/手机号/E-mail" class="username"><br>
             <input type="" name="" placeholder=" 请输入您的密码" class="password"><br>
           </form>
-         <center> <button class="btn">登录</button></center>
+         <!-- <center> <button class="btn">登录</button></center> -->
+         <button class="btn">登录</button>
        </div>
        <span class="reg">立即注册</span>
        <span class="find">找回密码</span>
@@ -55,8 +56,9 @@ export default {
 		border:none;
 		margin-top: 15px;
 		margin-left: 10px;
-		text-align: center;
+		/*text-align: center;*/
 		border-radius: 5px;
+		cursor: pointer;
 	}
 	span.reg{
 		float: left;

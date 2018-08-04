@@ -2,11 +2,12 @@
   <div> 
 
 <div class="header">
+	<router-link class="abc" to="/film/nowplaying"><i class="iconfont icon-fanhui"></i></router-link>
 	<div>猫眼电影</div>
 </div>
 	<ul class="nav">
-	<router-link class="left" activeClass="Tibbers" tag="li" to="/personal/meituan">美团账号登陆</router-link>
-	<router-link class="rigth" activeClass="Tibbers" tag="li" to="/personal/cellphone">手机验证登陆</router-link>
+		<router-link class="left" activeClass="Tibbers" tag="li" to="/personal/meituan">美团账号登陆</router-link>
+		<router-link class="rigth" activeClass="Tibbers" tag="li" to="/personal/cellphone">手机验证登陆</router-link>
 
 	</ul>
 	
@@ -45,7 +46,7 @@ export default {
 		left: 0;
 		top: 0;
 		color: #fff;
-		font-size:24px;
+		font-size:20px;
 		text-align: center;
 	}
 	li{
@@ -54,5 +55,20 @@ export default {
 		height:30px;
 		line-height: 30px;
 		list-style: none;
+	}
+	.abc{
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		float: left;
+	}
+	.abc i{
+		font-size: 20px;
+		margin-left:10px;
+			 
+	}
+	i .iconfont{
+		text-decoration:none;
+		color: white;
 	}
 </style>

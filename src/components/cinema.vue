@@ -5,10 +5,10 @@
 		
 			<div class="cinema">影院</div>
 			<div class="inp">
-				 <i class="iconfont icon-plus-select-down"></i>				
-	 			<span>大连</span>
+				 <i class="iconfont icon-plus-select-down"></i>
+	 			<select name="" id=""><option value="">大连</option></select>
 				<i class="iconfont icon-icon-" id="magnimier"></i>
-				<input type="text" placeholder="搜影院">
+				<input type="text" placeholder="搜影院" class="search">
 				<ul class="qqq">
 					<li><div >全城</div></li>
 					<i id="on" class="iconfont icon-plus-select-down"></i>
@@ -34,9 +34,7 @@
 				
 				<span v-if="datalist.tag.halltype" class="blu">厅</span>
 			</div>
-			
-			<!--<span v-if="datalist.tag.endorse" class="blue">卡</span>
-			<span class="last">{{datalist.promotion.cardPromotionTag}}</span>-->
+		
 
 
 		</div>
@@ -90,7 +88,7 @@ export default {
 		height:50px;
 		line-height: 50px;
 		text-align: center;
-		font-size: 24px;
+		font-size: 20px;
 		color:#fff;
 	}
 	header .inp{
@@ -112,7 +110,7 @@ export default {
 		color: #666;
 	}
 	header .inp input{
-		width:260px;
+		width:80%;
 		height: 25px;
 		margin-left: 10px;
 		text-align: center;
@@ -164,10 +162,10 @@ export default {
 		}
 	}
 
-				.child{
-					border-right: none;
+		.child{
+			border-right: none;
 				}
-.header{
+	.header{
 
 	line-height: 50px;
 	width: 100%;
@@ -184,7 +182,8 @@ export default {
 		height: 120px;
 		margin: 0 auto;
 		background:#fff;                              
-		margin-top: 50px;} 
+		margin-top: 150px;
+	} 
 
 .list{
 margin-top: 10px;
@@ -233,6 +232,10 @@ span{position: absolute;
     font-size: 12px;
     color: #9f9f9f;
     	}
-	
 
+select{
+	background: none;
+	font-size: 14px;
+	border:none;
+}
 </style>

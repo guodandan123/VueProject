@@ -2,25 +2,26 @@
   <div> 
 	
 <swipe class="my-swipe">
-  <swipe-item class="slide1" v-for="datalist in loopList">
+  	<swipe-item class="slide1" v-for="datalist in loopList" :key="datalist.id">
   	<ul>
-  	<li><img class="swipe" :src="datalist.img" alt=""><img :src="datalist.img" alt=""><img :src="datalist.img" alt=""><img :src="datalist.img" alt=""><img :src="datalist.img" alt=""><img :src="datalist.img" alt=""></li>	
-  	
+  		<li><img :src="datalist.img" alt=""></li>	
 	</ul>
   </swipe-item>
-
 </swipe>
 
 
 	<ul class="list" v-for="datalist in comingList"   @click="handleClick(datalist.id)">
 	<li><img :src="datalist.img" alt=""></li>
 <li>	<ul class="right">
-		<li class="name"><h4>{{datalist.nm}}</h4></li>
+		<li class="name"><h3>{{datalist.nm}}</h3></li>
 		<li class="sc">评分:{{datalist.sc}}</li>
 		<li class="star">主演:{{datalist.star}}</li>
 		<li class="star">{{datalist.showInfo}}</li>
 
-	</ul></li>
+	</ul>
+		<button :class="(datalist.showst=='4')?'blue':'yellow'"><span>{{datalist.showst=='4'?bbb:aaa}}</span></button> 
+		<!-- <button>{{datalist.globalReleased}}</button> -->
+</li>
 </ul>
 
   </div>
@@ -36,7 +37,9 @@ export default {
   data(){
   	return{
   		comingList:[],
-  		loopList:[]
+  		loopList:[],
+  		aaa:'想看',
+  		bbb:'预售'
   	}
   },
   components:{
@@ -72,15 +75,27 @@ export default {
 </script>
 
 <style scoped>
-.my-swipe{padding-top: 5px}
-.swipe{margin-left: 3px}
+.my-swipe{padding:5px 0;position: relative;}
+.my-swipe img{
+	/*margin-left: 40%;*/
+	/*margin: auto;*/
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
 .my-swipe {
   height:115px;
-  color: #fff;
+  /*color: #fff;*/
   font-size: 30px;
   text-align: center;
+  margin: 0 auto;
 }
-
+.my-swipe ul{
+	margin:auto;
+}
 .header{
 	
 	float: left;
@@ -94,6 +109,9 @@ export default {
 	color: #fff;
 	font-size:24px;
 	text-align: center;
+}
+div{
+	margin-bottom:50px;
 }
 
 li{list-style: none;}
@@ -121,16 +139,36 @@ img{
 }
 
 
-.list{	border-bottom: 1px solid #eee;
+.list{	
+	border-bottom: 1px solid #eee;
 	height: 114px;
 	padding:10px;
+	font-size: 14px;
+	line-height: 25px;
 }
 .right{
-	padding-left: 30px;
+	padding-top:10px;
+	padding-left:20px;
 	float: left;
 	overflow: hidden;
 }
 .list .name{
 
+}
+button{
+	width: 50px;
+	height: 30px;
+	margin-top: 50px;
+	float: right;
+	border:none;
+	color:white;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.yellow{
+	background: #faaf00;
+}
+.blue{
+	background: #3c9fe6;
 }
 </style>
