@@ -4,11 +4,12 @@
 <div class="header">
 	 <div>
           <form id="logupdetail"  >
-            <input type="" name="" placeholder=" 账户/手机号/E-mail" class="username"><br>
-            <input type="" name="" placeholder=" 请输入您的密码" class="password"><br>
+            <input type="" name="" placeholder=" 账户/手机号/E-mail" class="username" id="username"><br>
+            <input type="" name="" placeholder=" 请输入您的密码" class="password" id="password"><br>
           </form>
          <!-- <center> <button class="btn">登录</button></center> -->
-         <button class="btn">登录</button>
+         <!-- <button class="btn">登录</button> -->
+         <router-link class="btn" tag="button" to="/film/nowplaying">登录</router-link>
        </div>
        <span class="reg">立即注册</span>
        <span class="find">找回密码</span>
@@ -29,6 +30,15 @@ import axios from 'axios'
 export default {
   name: 'film'
 }
+
+if(username === ''){
+		res.send('<script>alert("用户名不能为空！");history.back();</script>');
+		return;
+	}
+	else if(password === ''){
+		res.send('<script>alert("密码不能为空！");history.back();</script>');
+		return;
+	}
 </script>
 
 <style scoped>
