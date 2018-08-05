@@ -9,7 +9,7 @@
 	<li>
 	<ul class="right">
 		<li class="name"><h3>{{filminfo.nm}}</h3></li>
-		<li class="sc">评分:{{filminfo.sc}}</li>
+		<li class="sc">{{filminfo.sc}}</li>
 		<li class="star">主演:{{filminfo.star}}</li>
 		<li class="star">{{filminfo.showInfo}}</li>
 		<li class="star">{{filminfo.pubDesc}}</li>
@@ -17,28 +17,28 @@
 	</ul>
 	</li>
 </ul>
-	</div>
-	<h4>剧情简介：</h4>
-	<p class="p">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{filminfo.dra}}</p>
+	</div><br><br><br><br><br><br><br>
+	<p class="intr">剧情简介：</p>
+	<p class="p">{{filminfo.dra}}</p>
 
 
 
 	<div class="falls">
-		<h4>上映地点：</h4>
+		<p class="intr">上映地点：</p>
 		<div class="list" v-for="datalist in cinemaList">
-			<div class="h1">{{datalist.nm}}</div> 
+			<div class="h1">{{datalist.nm}}<span class="num">{{datalist.sellPrice}}元</span></div>
 		
-			<p class="addr">&nbsp;&nbsp;&nbsp;&nbsp;{{datalist.addr}}</p><div>{{datalist.distance}}</div>
+			<div class="addr">{{datalist.addr}}</div>
+			<button class="one">退</button>
+			<button class="one">改签</button>
+			<button class="two">小吃</button>
+			<button class="two">折扣卡</button>
+			<div class="dis">{{datalist.distance}}</div>
+			<br>
 			<div class="spanParent">
-			
-			
-				
+			<button class="card">卡</button><div class="cardInfo">{{datalist.promotion.cardPromotionTag}}</div>
 			</div>
-			
-			<!--<span v-if="datalist.tag.endorse" class="blue">卡</span>
-			<span class="last">{{datalist.promotion.cardPromotionTag}}</span>-->
-
-
+	
 		</div>
 	</div>
 </div>
@@ -92,51 +92,58 @@ h4{
 	display: inline-block;
 }
 
-.falls{width: 95%;
-		height: 120px;
-		margin: 0 auto;
-		background:#fff;                              
-		margin-top: 50px;} 
+.falls{
+	width: 95%;
+	height: 120px;
+	background:#fff;                              
+	margin-top: 20px;
+	} 
 
 .list{
-margin-top: 10px;
-	   border-bottom: 1px solid #ccc;
-	   padding-bottom: 10px;}
-.h1{font-size: 16px;
+	margin-left: 10px;
+	margin-top: 20px;
+	 border-bottom: 1px solid #ccc;
+	 padding-bottom: 20px;
+	 height: 90px;
+	}
+.h1{
+	font-size: 16px;
 	font-weight: 600;
    display: inline-block;
 				}
-.span{font-size: 14px;
-	  color: #f3645f;
-	  margin-right: 50px}
-.span span{font-size: 14px;
-margin-right:-25px }
-
+.span{
+	font-size: 14px;
+	color: #f3645f;
+	margin-right: 50px;
+}
+p.intr{
+	text-indent:10px;
+	font-weight: bold;
+	line-height: 24px;
+}
 span{position: absolute;
 	right: 0;
 	width:50px;
-				}
-
-
+}
 .spanParent span{	margin-top: 3px;
 	margin-bottom: 3px;
 	border:1px solid #57c0f8;
 	border-radius: 2px;
 	color:#57c0f8;
-	font-size: 12px;
+	font-size: 10px;
 }
 
 .detail{
 	margin-left: 20px
 }
-.cinemalist{padding-top: 20px;
+.detail img{
+	margin:10px 0;
+}
+.cinemalist{
+	padding-top: 20px;
 	margin-left: 20px;
 }
-.cinemalist li{
-	
 
-
-}
 .header i{
 	float: left;
 	font-size: 24px;
@@ -157,7 +164,10 @@ span{position: absolute;
 }
 .p{
 	color: #333;
-margin-left: 10px}
+	margin-left: 10px;
+	margin-right: 10px;
+	text-indent: 20px;
+}
 
 li{list-style: none;}
 img{
@@ -166,29 +176,60 @@ img{
 }
 .sc{
 	font-weight: 600;
+	color: #ffcc00;
+	font-size: 18px;
 }
 .star{
 	overflow: hidden;
 	width: 220px;
-}
-.list{
-
-	height: 70px;
-	padding:10px;
 }
 .right{
 	padding-left: 30px;
 	float: left;
 	overflow: hidden;
 	height: 114px;
-	
+	margin-top: 10px;
 }
 .list{
 	border-bottom: 1px solid #eee;
-
 }
 .addr{
-	font-size: 12px;
-	color: #555
+	font-size: 14px;
+	color: #999;
+	line-height: 20px;
 }
+.dis{
+	float: right;
+	margin-bottom: 50px;
+}
+.one{
+	border:none;
+	border:1px solid #589daf;
+	background: white;
+	color: #589daf;
+}
+.two{
+	border:none;
+	border:1px solid #ff9900;
+	background: white;
+	color: #ff9900;
+}
+.card{
+	width: 15px;
+	height: 15px;
+	border:none;
+	background: #57c0f8;
+	color: white;
+
+}
+.cardInfo{
+	font-size: 14px;
+	display: inline-block;
+	color: #999999;
+	line-height: 28px;
+}
+.num{
+	color: #f2544f;
+}
+
 </style>

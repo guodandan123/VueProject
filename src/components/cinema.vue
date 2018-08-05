@@ -72,6 +72,7 @@ export default {
 		cinemaList:[],
 		isShow:false,
 		isact:0,
+		
 	}
   },
    components:{
